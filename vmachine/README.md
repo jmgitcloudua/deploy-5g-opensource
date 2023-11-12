@@ -689,3 +689,6 @@ In investigating 5G SA, I have built a simulation environment and can now use a 
 <a id="references"></a>
 
 ## References
+[Open5GS Documentation Blog](https://open5gs.org/open5gs/) <br>
+[Open5GS QUICK Start Documentation](https://open5gs.org/open5gs/docs/guide/01-quickstart/) <br>
+[K8S Open5GS Related Installation](https://github.com/s5uishida/open5gs_5gc_ueransim_sample_config)

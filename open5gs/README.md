@@ -250,7 +250,7 @@ This cmd below is accomplished if you run your open5GS locally
  ```
 
 ## References
-[Free5GC Documentation](https://free5gc.org/) <br>
+[Open5GS Documentation Blog](https://open5gs.org/open5gs/) <br>
 [Docker Documentation](https://docs.docker.com/engine/install/ubuntu/) <br>
 [Istio documentation](https://istio.io/latest/docs/setup/getting-started/) <br>
 [Helm documentation](https://helm.sh/docs/intro/install/) <br>
