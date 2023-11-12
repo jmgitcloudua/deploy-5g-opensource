@@ -1,5 +1,10 @@
 # Instructions to deploy Open5GS using K8S
-
+- [Requirements](#requirements)
+    - [Systems Requirements](#system-requirements)
+    - [Configurations Steps](#configuration-steps)
+- [Ready to deploy open5gs](#now-we-are-ready-to-deploy-open5gs-and-ueransim)
+- [Very the deployments](#verify-deployment)
+- [References](#references)
 
 ![](./images/diagram-k8s-open5gs-deploy.png)
 ## Requirements
@@ -111,6 +116,11 @@ Thus, this deployment will not only launch the **gNodeB**, but it will also enab
 It is important to notice that the default values of **mcc**, **mnc**, **sst**, **sd** and tac match those configured in the **open5gs** chart and the registered UEs. <br>
 
 ### Verify deployment 
+We can verify some importants components like **deployments**, **services**, **pods**, etc.
+
+ ![Open5gs SMF Logs](./images/BII-openstack-k8s-open5gs-get-deployments.png)
+  ![Open5gs SMF Logs](./images/BII-openstack-k8s-open5gs-get-pods.png)
+   ![Open5gs SMF Logs](./images/BII-openstack-k8s-open5gs-get-services-1.png)
 
 12. Connection between SMF and UPF (C-Plane and U-Plane of NGC) <br>
 
@@ -172,7 +182,38 @@ tcpdump -i ogstun
 ```
 ![Open5gs UPF tcpdump](./images/BII-openstack-k8s-open5gs-upf-deployment-exec-tcpdump-test.png)
 
-### Clean 
+**Note:** we can register others UEs using WEBUI ou via CLI.
+- Via WEBUI
+    - URL: http://[your ip address]:3000 (or your node port)
+    - Username: admin
+    - Password: 1423
+![Open5gs WEBUI login](./images/BII-openstack-k8s-open5gs-webui.png)
+![Open5gs WEBUI login](./images/BII-openstack-k8s-open5gs-webui-subscriber.png)
+
+
+- Via CLI  <br>
+**Additional subscribers using open5gs-populate** <br>
+Once the NGC is deployed, we can register additional subscribers at any time by using the Deployment previously described: 
+```
+kubectl exec deployment/open5gs-populate -ti -- bash
+```
+From there, we can register a new subscriber by executing the following command, providing the corresponding values for imsi, key, opc, apn, sst and sd:
+```
+open5gs-dbctl add_ue_with_slice <imsi> <key> <opc> <apn> <sst> <sd>
+```
+After that, the changes can be verified following 2 different approaches: <br>
+ **1. Directly through MongoDB**
+ ```
+ kubectl exec deployment/open5gs-mongodb -ti -- bash
+ ```
+ **2. Using the Open5GS WebUI** <br>
+This cmd below is accomplished if you run your open5GS locally
+ ```
+ kubectl port-forward svc/open5gs-webui 3000:3000
+ ```
+
+
+## Clean 
  - Clean the deployment for this demo by uninstalling the 2 helm charts previously installed: <br>
  ```
  helm uninstall ueransim-gnb -n open5gs
