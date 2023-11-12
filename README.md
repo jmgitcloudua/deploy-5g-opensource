@@ -4,7 +4,7 @@ Deploying 5G core using containerization, is more effient and
 flexible, scalable and, portable than using VM or dedicated server.
 ## Deploy using VM in OpenStack
 OpenStack is a free and open-source cloud computing platform for building and managing public and private clouds. It controls large pools of compute, storage, and networking resources. However, we can deploy 5G Core using VMs in OpenStack. <br>
-Please click [here](https://github.com/jmgitcloudua/deploy-5g-container/tree/main/docker) to follow instructions to deploy open5GS VMs in OpenStack.
+Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/vmachine) to follow instructions to deploy open5GS VMs in OpenStack.
 ## Deploy using Docker 
 Docker is an orchestration platform to quickly deploy services like 5G core.<br>
 Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/free5gc) or [here](https://github.com/jmgitcloudua/deploy-5g-container/tree/main/docker) to follow instructions to deploy Free5GC or NextEPC using Docker, respectively .
