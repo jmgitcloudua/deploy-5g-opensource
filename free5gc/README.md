@@ -76,8 +76,8 @@ sudo docker container ls
 
 **OBs:** this instructions was deployed using AWS EC2. So, you can deploy localy or whatever you want.
 
-### References
-![Free5GC Documentation](https://free5gc.org/) <br>
-![Docker Documentation](https://docs.docker.com/engine/install/ubuntu/) <br>
-![Ansible documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible) <br>
-![Docker Free5GC Related Installation](https://github.com/Edwin-programmer/Project5G-ansible-deployment/tree/main/Docker%20deployment)
+## References
+[Free5GC Documentation](https://free5gc.org/) <br>
+[Docker Documentation](https://docs.docker.com/engine/install/ubuntu/) <br>
+[Ansible documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible) <br>
+[Docker Free5GC Related Installation](https://github.com/Edwin-programmer/Project5G-ansible-deployment/tree/main/Docker%20deployment)
