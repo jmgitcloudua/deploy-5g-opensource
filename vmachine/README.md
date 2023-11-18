@@ -37,7 +37,7 @@
 
 ## Overview of Open5GS 5GC Simulation Mobile Network
 
-I created a 5GC mobile network (Internet reachable) for simulation with the aim of creating an environment in which packets can be sent end-to-end with different DNs for each DNN.
+We have created a 5GC mobile network (Internet reachable) for simulation with the aim of creating an environment in which packets can be sent end-to-end with different DNs for each DNN.
 
 The following minimum configuration was set as a condition.
 - C-Plane have multiple U-Planes.
