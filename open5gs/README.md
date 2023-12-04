@@ -5,6 +5,9 @@
 - [Ready to deploy open5gs](#now-we-are-ready-to-deploy-open5gs-and-ueransim)
 - [Very the deployments](#verify-deployment)
 - [References](#references)
+- [ Monitoring and Observability](#monitoring-and-observability)
+    - [Accessing Prometheus and Grafana on Web Browser](#accessing-prometheus-and-grafana-on-web-browser)
+    - [Cleaning Monitoring](#cleaning-monitoring)
 
 ![](./images/diagram-k8s-open5gs-deploy.png)
 ## Requirements
@@ -313,7 +316,7 @@ http://your IP address:your grafana NodePort
 ![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Receive-BW.png)
 **Note:** In the images/monitoring-k8s-open5gs folder you can find several other images to explore. Please, feel free to do it.
 
-### Clean Monitoring
+### Cleaning Monitoring
 ```
 helm uninstall promethes -n monitoring
 ```
