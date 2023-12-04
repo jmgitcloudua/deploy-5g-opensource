@@ -1,0 +1,1 @@
+# Instructions to deploy OpenAirInterface using Docker and K8S
