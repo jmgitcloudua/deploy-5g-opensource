@@ -249,6 +249,80 @@ This cmd below is accomplished if you run your open5GS locally
  kubectl label namespace default istio-injection-
  ```
 
+## Monitoring and Observability
+To better understand what's happened into container and VM workload level, it was necessary deploying Prometheus and Grafana using K8S.<br>
+We installed it using helm tools to quickly deploy Prometheus and Grafana. Please, follow the sequential steps below to implement it. <br>
+- Create and display the namespace
+```
+kubectl create namespace monitoring
+kubect get ns
+```
+- Install Prometheus Community Stack
+```
+helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
+```
+- Display some important components installed
+```
+kubectl get pods -n monitoring
+kubectl get deployments -n monitoring
+kubectl get svc -n monitoring
+```
+- Edit the services(svc) to change from ClusterIP to NodePort to access Prometheus/Grafana externally. Go almost at end of the file, you will see Type: ClusterIP as shown in image below.
+```
+kubectl edit svc prometheus-grafana -n monitoring
+```
+![](./images/BII-Openstack-Open5GS-K8S-ClusterIP-to-NodePort.png)
+
+- Display again the SVC and you can see the image specifing what to change.
+```
+kubectl get svc -n monitoring
+```
+![](./images/BII-Openstack-Open5GS-K8S-Dsiplay-SVC-NodePort.png)
+
+### Accessing Prometheus and Grafana on Web Browser
+- For Prometheus
+  - Username: not need
+  - Password: not need
+```
+http://your IP address:your prometheus NodePort
+```
+- Next you can see some images for Prometheus how it looks like.
+![](./images/monitoring-k8s-open5gs/BII-Openstack-open5GS-K8S-Prometheus-1.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-prometheus-target-up.png)
+![](./images/monitoring-k8s-open5gs/BII-Openstack-open5GS-K8S-Prometheus-Rules.png)
+![](./images/monitoring-k8s-open5gs/BII-Openstack-open5GS-K8S-Prometheus-HeadStats.png)
+![](./images/monitoring-k8s-open5gs/BII-Openstack-open5GS-K8S-Prometheus-Runtime-Information.png) <br>
+
+
+- For Grafana
+  - Username: admin
+  - Password: prom-operator
+```
+http://your IP address:your grafana NodePort
+```
+**OBS.**: Your IP address must be whose from your interface or Public IP. If you're using AWS EC2 or OpenStack, you have to make sure your NodePort is added to your security group to accessed. 
+
+- Next you can see some images for Grafana how it looks like.
+![](./images/monitoring-k8s-open5gs/BII-OpenStack-open5GS-grafana-login.png)
+![](./images/monitoring-k8s-open5gs/BII-OpenStack-open5GS-grafana-dashboard.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Current-Rate-Of-Bytes-Received-ns-pods.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Current-Rate-Of-Bytes-Transmitted-ns-pods.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Rate-Of-Received-Packets-1.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Rate-Of-Transmitted-Packets-1.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Transmit-BW.png)
+![](./images/monitoring-k8s-open5gs/BII-openstack-open5gs-grafana-Receive-BW.png)
+**Note:** In the images/monitoring-k8s-open5gs folder you can find several other images to explore. Please, feel free to do it.
+
+### Clean Monitoring
+```
+helm uninstall promethes -n monitoring
+```
+You can delete the namespace as well.
+```
+ kubectl delete namespaces monitoring
+```
+
+
 ## References
 [Open5GS Documentation Blog](https://open5gs.org/open5gs/) <br>
 [Docker Documentation](https://docs.docker.com/engine/install/ubuntu/) <br>
