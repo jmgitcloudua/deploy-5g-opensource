@@ -1,5 +1,11 @@
 # Instructions to deploy OpenAirInterface using Docker-Compose and K8S
 
+- [Requirements](#requirements)
+- [5G Core Network Deployment using using Docker-Compose, perform a basic deployment](#5g-core-network-deployment-using-using-docker-compose-perform-a-basic-deployment)
+- [Undeploy/stop the deployment](#undeploystop-the-deployment)
+- [References](#references)
+
+
 ![](./images/5gCN-basic.png)
 ## Requirements
 - Install [docker and docker-compose](https://docs.docker.com/engine/install/ubuntu/) (Ubuntu/Debian)
@@ -473,5 +479,74 @@ value[2023-11-26 12:00:56.106] [nas_mm] [debug] Decoded 5GS Mobile Identity, len
 - UERANSIM Log
 ![](./images/BII-OAI-docker-ueransim-logs-3.png)
 
+- Test OAI 5G Core with UERANSIM - using ueransim0 interface
+```
+docker exec ueransim ping -c 20 -I ueransim0 google.com
+```
+![](./images/BII-OAI-docker-ueransim-test-ping-ueransim0.png)
 
 
+- Test OAI 5G Core with UERANSIM - using IP Address
+![](./images/BII-OAI-docker-ueransim-test-ping-ueransim0-ipAddr.png)
+
+- Test using iperf3
+Here we do iperf traffic test between UERANSIM UE and external DN node. We can make any node as iperf server/client.
+    - run firstly the server
+    ```
+    docker exec -it oai-ext-dn iperf3 -s
+    ```
+    ![](./images/BII-OAI-docker-ext-dn-test-iperf3-server.png)
+    - run secondly the client
+        ![](./images/BII-OAI-docker-ext-dn-test-iperf3-client.png)
+
+6. Next, we can scale the umber of UEs (_NUMBER_OF_UE_).
+```
+cd oai-cn5g-fed/docker-compose
+```
+```
+nano docker-compose-ueransim-vpp.yaml
+```
+Change the _NUMBER_OF_UE_  from 1 to 100
+```
+NUMBER_OF_UE=100
+```
+Update the UERANSIM or RESTART it
+```
+docker-compose -f docker-compose-ueransim-vpp.yaml up -d
+```
+- Test OAI 5G Core with UERANSIM - using ueransim40 interface
+ ![](./images/BII-OAI-docker-ueransim-test-ping-ueransim40.png)
+ - Test OAI 5G Core with UERANSIM - using IP address
+ ![](./images/BII-OAI-docker-ueransim-test-ping-ueransim40-ipAddr.png)
+ - Display the information and the status into the container
+ ```
+ docker exec -it ueransim ./nr-cli imsi-208950000000040
+ ``` 
+  ![](./images/BII-OAI-docker-ueransim-exec-imsi-40-cmd-info.png)
+    ![](./images/BII-OAI-docker-ueransim-exec-imsi-40-cmd-status.png)
+
+### Undeploy/stop the deployment
+Make sure you're into the folder _oai-cn5g-fed/docker-compose_
+- Stop OAI 5G core basic
+```
+python3 core-network.py --type stop-basic --scenario 1
+```
+- Undeploy OAI 5G core basic
+```
+docker-compose -f docker-compose-basic-vpp-nrf.yaml down
+```
+- Undeploy UERANSIM 
+```
+docker-compose -f docker-compose-ueransim-vpp.yaml down
+```
+-  Undeploy Core network
+```
+python3 ./core-network.py --type stop-basic-vpp --fqdn no --scenario 1
+```
+
+## References
+[OAI 5G Core Network Documentation](https://openairinterface.org/oai-5g-core-network-project/) <br>
+[5G Core Network Basic Deployment using Docker-Compose](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/docs/DEPLOY_SA5G_WITH_UERANSIM.md) <br>
+[URANSIM OAI Oficial Tutorial](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/docs/DEPLOY_SA5G_WITH_UERANSIM.md) <br>
+[GNBSIM OAI Oficial Tutorial](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/docs/DEPLOY_SA5G_MINI_WITH_GNBSIM.md) <br>
+[OAI gneral Docs Tutoril - GitLab](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/docs/DEPLOY_HOME.md)
