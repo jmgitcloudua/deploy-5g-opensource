@@ -3,11 +3,12 @@
     - [Systems Requirements](#system-requirements)
     - [Configurations Steps](#configuration-steps)
 - [Ready to deploy open5gs](#now-we-are-ready-to-deploy-open5gs-and-ueransim)
-- [Very the deployments](#verify-deployment)
-- [References](#references)
+- [Verify the deployments](#verify-deployment)
+  - [Clean deployments](#clean-deployments)
 - [ Monitoring and Observability](#monitoring-and-observability)
     - [Accessing Prometheus and Grafana on Web Browser](#accessing-prometheus-and-grafana-on-web-browser)
     - [Cleaning Monitoring](#cleaning-monitoring)
+- [References](#references)
 
 ![](./images/diagram-k8s-open5gs-deploy.png)
 ## Requirements
@@ -216,7 +217,7 @@ This cmd below is accomplished if you run your open5GS locally
  ```
 
 
-## Clean 
+## Clean deployments
  - Clean the deployment for this demo by uninstalling the 2 helm charts previously installed: <br>
  ```
  helm uninstall ueransim-gnb -n open5gs
