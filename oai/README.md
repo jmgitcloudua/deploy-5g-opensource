@@ -2,7 +2,9 @@
 
 - [Requirements](#requirements)
 - [5G Core Network Deployment using using Docker-Compose, perform a basic deployment](#5g-core-network-deployment-using-using-docker-compose-perform-a-basic-deployment)
-- [Undeploy/stop the deployment](#undeploystop-the-deployment)
+    - [Undeploy/stop the deployment](#undeploystop-the-deployment)
+- [OpenAirInterface 5G Core and RAN Network Function Deployment using Helm Charts](#openairinterface-5g-core-and-ran-network-function-deployment-using-helm-charts)
+    - [Clean OAI using k8s](#clean-oai-deployments-using-k8s)
 - [References](#references)
 
 
@@ -11,10 +13,10 @@
 - Install [docker and docker-compose](https://docs.docker.com/engine/install/ubuntu/) (Ubuntu/Debian)
 - Recommmeded to use:
     - 4 CPU
-    - 16GiB RAN
+    - 16GiB RAM
     - Minimum 1.5 GiB of free storage for docker images
     - Install wireshark
-## 5G Core Network Deployment using using Docker-Compose, perform a basic deployment
+## 5G Core Network Deployment using Docker-Compose, perform a basic deployment
 1. First of all, we go _Pulling the images from Docker Hub_. You can create a bash script to deploy it quickly instead of typing the commands one-by-one.
 ```
 #!/bin/bash
@@ -543,6 +545,273 @@ docker-compose -f docker-compose-ueransim-vpp.yaml down
 ```
 python3 ./core-network.py --type stop-basic-vpp --fqdn no --scenario 1
 ```
+
+
+## OpenAirInterface 5G Core and RAN Network Function Deployment using Helm Charts
+
+![](./images/helm-chart.png)
+## Requirements
+- Install [docker and docker-compose](https://docs.docker.com/engine/install/ubuntu/) (Ubuntu/Debian)
+- Install [k3s Quick-Start](https://docs.k3s.io/quick-start) in you Linux Machine/VM
+- Install [Helm from Script](https://helm.sh/docs/intro/install/) in your Linux Machine/VM
+- Recommmeded to use:
+    - 4 CPU
+    - 16GiB RAM
+    - Minimum 50 GiB of storage 
+    - Install wireshark
+- Install [Helm Spray](https://github.com/ThalesGroup/helm-spray) plugin in your Linux Machine/VM
+- (Optional) Multus CNI if using multiple interfaces for NFs
+
+## 1. Clone the git repository
+```
+git clone -b <Branch> https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed
+```
+## 2. Configuring Helm Charts
+```
+cd oai-cn5g-fed
+ls charts/
+oai-5g-core  oai-5g-ran
+ls charts/oai-5g-core/
+mysql  oai-5g-advance  oai-5g-basic  oai-5g-mini  oai-amf  oai-ausf  oai-nrf  oai-nssf  oai-smf  oai-traffic-server  oai-udm  oai-udr  oai-upf
+ls charts/oai-5g-ran/
+oai-cu  oai-cu-cp  oai-cu-up  oai-du  oai-gnb  oai-nr-ue
+
+```
+- The structure of all these folders is similar as below described
+```
+oai-5g-basic/
+├── Chart.yaml
+├── config.yaml
+├── README.md
+├── templates
+│   └── configmap.yaml
+└── values.yaml
+
+1 directory, 5 files
+```
+- Helm chart of every network function looks similar and has the below structure. Only the chart of mysql database and NRF is different.
+```
+Network_function/
+├── Chart.yaml
+├── config.yaml
+├── README.md
+├── templates
+│   ├── configmap.yaml
+│   ├── deployment.yaml
+│   ├── _helpers.tpl
+│   ├── multus.yaml
+│   ├── NOTES.txt
+│   ├── rbac.yaml
+│   ├── serviceaccount.yaml
+│   └── service.yaml
+└── values.yaml
+
+1 directory, 12 files
+```
+## 3. Create namespace, display namespace
+Create a namespace where the helm-charts will be deployed, in our environment we deploy them in oai-tutorial namespace. To create a namespace use the below command on your cluster.
+- create namespace
+```
+kubectl create ns oai-tutorial
+```
+- display namespace
+```
+kubectl get namespace
+```
+## 4. Networking related information
+- Configure Multiple Interfaces <br>
+To configure multus for AMF, SMF or UPF, in values.yaml of each network function edit the multus section.<br>
+```
+## Example from oai-amf/values.yaml
+multus:
+  ## If you don't want to add a default route in your pod then leave this field empty
+  defaultGateway: "172.21.7.254"
+  n2Interface:
+    create: false
+    Ipadd: "172.21.6.94"
+    Netmask: "22"
+    ## If you do not have a gateway leave the field empty
+    Gateway:
+    ## If you do not want to add any routes in your pod then leave this field empty
+    routes: [{'dst': '10.8.0.0/24','gw': '172.21.7.254'}]
+    hostInterface: "bond0" # Interface of the host machine on which this pod will be scheduled
+```
+- Use Single Interface <br>
+In values.yaml of AMF, SMF and UPF in multus section do multus.create false like below:
+```
+## Example from oai-amf/values.yaml
+multus:
+  n2Interface:
+    create: false
+```
+## 4. Configuring Helm Chart Parameters
+In the [config.yaml](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/charts/oai-5g-core/oai-5g-basic/config.yaml) of oai-5g-basic helm charts you will see the configurable parameters for all the network functions check, the PLMN, DNN and subscriber information in mysql database. <br>
+For basic and advance deployment check the database [oai_db-basic.sql](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/charts/oai-5g-core/mysql/initialization/oai_db-basic.sql)<br>
+To add the entry before deploying the core network, make sure you have all the required subscriber information IMSI(ueid/supi), Key(encPermanentKey), OPC(encOpcKey), PLMN, NSSAI(SST, SD), DNN. <br>
+```
+ vim/vi/nano charts/oai-5g-core/mysql/initialization/oai_db-basic.sql
+# Add a new or edit existing entries after AuthenticationSubscription table
+INSERT INTO `AuthenticationSubscription` (`ueid`, `authenticationMethod`, `encPermanentKey`, `protectionParameterId`, `sequenceNumber`, `authenticationManagementField`, `algorithmId`, `encOpcKey`, `encTopcKey`, `vectorGenerationInHss`, `n5gcAuthMethod`, `rgAuthenticationInd`, `supi`) VALUES
+('208990100001124', '5G_AKA', 'fec86ba6eb707ed08905757b1bb44b8f', 'fec86ba6eb707ed08905757b1bb44b8f', '{\"sqn\": \"000000000020\", \"sqnScheme\": \"NON_TIME_BASED\", \"lastIndexes\": {\"ausf\": 0}}', '8000', 'milenage', 'c42449363bbad02b66d16bc975d77cc1', NULL, NULL, NULL, NULL, '208990100001124');
+# Add the PDN/DNN information after SessionManagementSubscriptionData table
+# To assign a static ip-address use the below entry
+INSERT INTO `SessionManagementSubscriptionData` (`ueid`, `servingPlmnid`, `singleNssai`, `dnnConfigurations`) VALUES 
+('208990100001124', '20899', '{\"sst\": 1, \"sd\": \"10203\"}','{\"oai\":{\"pduSessionTypes\":{ \"defaultSessionType\": \"IPV4\"},\"sscModes\": {\"defaultSscMode\": \"SSC_MODE_1\"},\"5gQosProfile\": {\"5qi\": 6,\"arp\":{\"priorityLevel\": 1,\"preemptCap\": \"NOT_PREEMPT\",\"preemptVuln\":\"NOT_PREEMPTABLE\"},\"priorityLevel\":1},\"sessionAmbr\":{\"uplink\":\"100Mbps\", \"downlink\":\"100Mbps\"},\"staticIpAddress\":[{\"ipv4Addr\": \"12.1.1.85\"}]}}');
+INSERT INTO `SessionManagementSubscriptionData` (`ueid`, `servingPlmnid`, `singleNssai`, `dnnConfigurations`) VALUES 
+('208990100001125', '20899', '{\"sst\": 1, \"sd\": \"10203\"}','{\"oai\":{\"pduSessionTypes\":{ \"defaultSessionType\": \"IPV4\"},\"sscModes\": {\"defaultSscMode\": \"SSC_MODE_1\"},\"5gQosProfile\": {\"5qi\": 6,\"arp\":{\"priorityLevel\": 1,\"preemptCap\": \"NOT_PREEMPT\",\"preemptVuln\":\"NOT_PREEMPTABLE\"},\"priorityLevel\":1},\"sessionAmbr\":{\"uplink\":\"100Mbps\", \"downlink\":\"100Mbps\"}}}');
+```
+In the config file smf.use_local_subscription_info should be yes to use the user DNN subscription information from the database. Else it will be used as defined in the configuration file.<br>
+Once the charts are configured perform helm dependency update inside the chart repository.
+```
+cd charts/oai-5g-core/oai-5g-basic
+helm dependency update
+```
+## 5. helm install basic oai-5g-basic
+Helm charts have an order of deployment for the proper configuration of core network.
+Once the configuration is finished the charts can be deployed with a user who has the rights to
+
+- Create RBAC (Optional only if Openshift is used)
+- Run pod (only UPF needs that) with privileged and anyuid scc (optional only required if you have scc configure in your cluster)
+- Create multus binds (optional only if multus is used)
+
+```
+helm install basic oai-5g-basic -n oai-tutorial
+```
+- Or you can deploy using Helm Spray plugin
+```
+cd charts/oai-5g-core/oai-5g-basic
+helm plugin install https://github.com/ThalesGroup/helm-spray
+helm spray --namespace oai-tutorial .
+```
+![](./images/BII-OAI-K8S-helm-spray-output.png)
+- Display deployments
+```
+kubectl get deployments -n oai-tutorial
+```
+![](./images/BII-OAI-K8S-get-deployments.png)
+- Display pods
+```
+kubectl get pods -n oai-tutorial
+```
+![](./images/BII-OAI-K8S-get-pods.png)
+- Display services
+```
+kubectl get services -n oai-tutorial
+```
+![](./images/BII-OAI-K8S-get-svc.png)
+
+## 6. How to check if the Core network is properly configured?
+```
+kubectl logs -l app.kubernetes.io/name=oai-smf -n oai-tutorial | grep 'handle_receive(16 bytes)' | wc -l
+```
+```
+kubectl logs -l app.kubernetes.io/name=oai-upf -n oai-tutorial | grep 'handle_receive(16 bytes)' | wc -l
+```
+## 7. Configuring OAI-gNB RFSimulator and OAI-NR-UE
+Very Important To access internet in NR-UE the N6/SGI interface of UPF should be able access the internet.<br>
+GNB requires the ip-address or service name of AMF. In case in AMF multus is used and N1/N2 interface is bind to multus interface, then please provide AMF ip-address.
+For this tutorial we are not using multus here for similicity, generally there should be two interfaces of gNB(for N2 and N3).<br>
+```
+## oai-gNB configuration from values.yaml
+config:
+  timeZone: "Europe/Paris"
+  useAdditionalOptions: "--sa -E --rfsim --log_config.global_log_options level,nocolor,time"
+  gnbName: "oai-gnb-rfsim"
+  mcc: "001"   # check the information with AMF, SMF, UPF
+  mnc: "01"    # check the information with AMF, SMF, UPF
+  tac: "1"     # check the information with AMF
+  sst: "1"  #currently only 4 standard values are allowed 1,2,3,4
+  usrp: rfsim   #allowed values rfsim, b2xx, n3xx or x3xx
+  amfhost: "oai-amf"  # amf ip-address or service-name oai-amf-svc or 172.21.6.94
+  n2IfName: "eth0"    # if multus.n2Interface.create is true then use n2
+  n3IfName: "eth0"
+```
+## 8. Deploy OAI-gNB RFSimulator
+```
+cd ../../oai-5g-ran/
+helm install gnb oai-gnb --namespace oai-tutorial
+```
+- Wait for the gNB to start
+```
+kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=oai-gnb --timeout=3m --namespace oai-tutorial
+```
+- To check if gnB is connected, read the logs of amf and check N2 setup procedure was correct or not,
+```
+kubectl logs --namespace oai-tutorial $(kubectl get pods --namespace oai-tutorial | grep oai-amf| awk '{print $1}') | grep 'Connected'
+```
+## 9. Configure OAI-NR-UE RFSimulator
+Please change timeZone according to your location
+```
+config:
+  timeZone: "Europe/Paris"
+  rfSimServer: "oai-du"    # ip-address of rfsim or service name oai-gnb in case of du change it with oai-du if multus is true then provide ip-address of oai-gnb
+  fullImsi: "001010000000100"       # make sure all the below entries are present in the subscriber database
+  fullKey: "fec86ba6eb707ed08905757b1bb44b8f" 
+  opc: "C42449363BBAD02B66D16BC975D77CC1"
+  dnn: "oai"
+  sst: "1"                     # configure according to gnb and amf, smf and upf 
+  sd: "16777215"
+  usrp: "rfsim"            # allowed rfsim, b2xx, n3xx, x3xx
+  useAdditionalOptions: "--sa --rfsim -r 106 --numerology 1 -C 3619200000 --nokrnmod --log_config.global_log_options level,nocolor,time"
+
+```
+## 10. Deploy OAI-NR-UE RFSimulator
+```
+helm install nrue oai-nr-ue/ --namespace oai-tutorial
+```
+## 11. Results after tests
+- Test of connectivity using ping util tool (UE1)
+```
+kubectl -n oai-tutorial exec -it pods/oai-nr-{your id pod here} -- /bin/bash
+```
+Into container pod, display the availables interfaces
+```
+ip address
+```
+![](./images/BII-OAI-K8S-test-ping-into-UE1.png)
+
+- Test connectivty directly from cluster
+![](./images/BII-OAI-K8S-test-ping.png)
+
+- Test of connectivity using ping util tool (oaitun_ue1 interface) into container pod <br>
+Again into container pod install this tool
+```
+apt update && apt get install tcpdump
+```
+![](./images/BII-OAI-K8S-test-ping-into-UE1-get-tcpdump.png)
+
+Leave the previous ping running and make tcpdump in UPF/oai-nr container pod.
+```
+kubectl -n oai-tutorial exec -it pods/oai-nr-{your id pod here} -- /bin/bash
+```
+![](./images/BII-OAI-K8S-exec-tcpdump-amf-itnterface-tun0-UPF.png)
+
+![](./images/BII-OAI-K8S-exec-tcpdump-amf-itnterface-tun0-UPF-with-curl.png)
+
+- Test performace using iperf3
+Into oai-nr container pod install iperf3
+```
+apt update && apt install iperf3
+```
+- Please, do in this order to test performance using iperf3
+    - First connect the server(UPF/oai-nr)
+    - second connect the client(UE1)
+
+![](./images/BII-OAI-K8S-exec-iperf3-UPF-server-1.png)
+
+![](./images/BII-OAI-K8S-exec-iperf3-UE1-client-1.png)
+
+
+## Clean OAI deployments using K8S
+- clean oai deployments
+```
+helm uninstall basic -n oai-tutorial
+```
+- clean helm spray plugin
+```
+helm plugin uninstall spray
+```
+
 
 ## References
 [OAI 5G Core Network Documentation](https://openairinterface.org/oai-5g-core-network-project/) <br>
