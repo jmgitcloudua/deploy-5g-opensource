@@ -45,6 +45,13 @@ docker image tag rohankharade/ueransim:latest ueransim:latest
 docker image ls
 ```
 ![](./images/BII-OAI-docker-images.png)
+
+- To deploy the OAI 5G Core Network, execute the following commands:
+```
+cd oai-cn5g-fed/docker-compose
+python3 ./core-network.py --type start-basic-vpp --scenario 1
+```
+OBS.: You can use _oai-cn5g-fed/docker-compose$ $ python3 ./core-network.py --help_ in order to check other optios of deployments. <br>
 ```
 docker ps
 ```
