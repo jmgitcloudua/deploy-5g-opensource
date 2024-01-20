@@ -114,7 +114,7 @@ sudo chmod 666 /tmp/oai/steering-scenario/user_plane_steering.*
 ```
 ### Steering Scenario
 The results of this tutorial are located in 
-[results/steering.](https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/blob/master/docker-compose/docker-compose-basic-vpp-pcf-steering.yaml)  
+[results/steering.](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/steering/results)  
 
 We can verify the PDU session details as per UPF session logs. We should note that the forwarding rule set for UE 1 (12.1.1.2), is with network instance internet.oai.org.pri. Which means all the UE 1 (12.1.1.2) traffic will be sent to DN over primary interface of the UPF.<br>
 ```
