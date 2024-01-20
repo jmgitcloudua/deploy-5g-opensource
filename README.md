@@ -17,6 +17,11 @@ Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/ma
 The goal of the OAI-5G Core Network (CN) project group is to provide a 3GPP-Compliant 5G Standalone (SA) CN implementation with a rich feature set. OAI 5G CN is designed and implemented in a flexible way which can be easily adapted to fulfill the needs of diversified 5G use-cases. All the features of the OAI 5G CN components are continuously tested with professional testers, commercial gNBs (with COTS UE) and open-source RAN simulators.<br>
 Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/oai) to follow instructions to deploy OAI using docker-compose and K8S.
 
+
+## 5G CN Traffic Steering Deployment
+This tutorial shows how to configure the Traffic Steering feature at SMF and UPF, based on policies from the PCF.<br>
+Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/oai) to follow instructions to deploy OAI using docker-compose and K8S.
+
 ## Memo <br>
 Fell free to contact me for any questions you can have.
 

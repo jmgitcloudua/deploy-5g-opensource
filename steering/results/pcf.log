@@ -1,0 +1,135 @@
+[2024-01-03 11:04:34.873] [config ] [info] Reading NF configuration from /openair-pcf/etc/config.yaml
+[2024-01-03 11:04:34.893] [config ] [debug] Unknown NF amf in configuration. Ignored
+[2024-01-03 11:04:34.893] [config ] [debug] Unknown NF smf in configuration. Ignored
+[2024-01-03 11:04:34.893] [config ] [debug] Unknown NF udm in configuration. Ignored
+[2024-01-03 11:04:34.893] [config ] [debug] Unknown NF udr in configuration. Ignored
+[2024-01-03 11:04:34.893] [config ] [debug] Unknown NF ausf in configuration. Ignored
+[2024-01-03 11:04:34.894] [config ] [debug] Validating configuration of log_level
+[2024-01-03 11:04:34.894] [config ] [debug] Validating configuration of register_nf
+[2024-01-03 11:04:34.894] [config ] [debug] Validating configuration of http_version
+[2024-01-03 11:04:34.894] [config ] [debug] Validating configuration of curl_timeout
+[2024-01-03 11:04:34.894] [config ] [debug] Validating configuration of nrf
+[2024-01-03 11:04:34.895] [config ] [debug] Validating configuration of pcf
+[2024-01-03 11:04:34.896] [config ] [debug] Validating configuration of database
+[2024-01-03 11:04:34.896] [config ] [info] ==== OPENAIRINTERFACE pcf vBranch: HEAD Abrev. Hash: 53d27f9 Date: Tue Dec 12 14:03:42 2023 +0000 ====
+[2024-01-03 11:04:34.896] [config ] [info] Basic Configuration:
+[2024-01-03 11:04:34.896] [config ] [info]   - log_level..................................: debug
+[2024-01-03 11:04:34.896] [config ] [info]   - register_nf................................: Yes
+[2024-01-03 11:04:34.896] [config ] [info]   - http_version...............................: 2
+[2024-01-03 11:04:34.896] [config ] [info]   - Curl Timeout...............................: 3000 (ms)
+[2024-01-03 11:04:34.896] [config ] [info] pcf:
+[2024-01-03 11:04:34.896] [config ] [info]   - host.......................................: oai-pcf
+[2024-01-03 11:04:34.896] [config ] [info]   - SBI
+[2024-01-03 11:04:34.896] [config ] [info]     + URL......................................: http://oai-pcf:8080
+[2024-01-03 11:04:34.896] [config ] [info]     + API Version..............................: v1
+[2024-01-03 11:04:34.896] [config ] [info]     + IPv4 Address ............................: 192.168.70.139
+[2024-01-03 11:04:34.896] [config ] [info] Policy
+[2024-01-03 11:04:34.896] [config ] [info]   - Policy Decisions...........................: /openair-pcf/policies/policy_decisions
+[2024-01-03 11:04:34.896] [config ] [info]   - PCC Rules..................................: /openair-pcf/policies/pcc_rules
+[2024-01-03 11:04:34.896] [config ] [info]   - Traffic Rules..............................: /openair-pcf/policies/traffic_rules
+[2024-01-03 11:04:34.896] [config ] [info] Peer NF Configuration:
+[2024-01-03 11:04:34.896] [config ] [info]   nrf:
+[2024-01-03 11:04:34.896] [config ] [info]     - host.....................................: oai-nrf
+[2024-01-03 11:04:34.896] [config ] [info]     - SBI
+[2024-01-03 11:04:34.896] [config ] [info]       + URL....................................: http://oai-nrf:8080
+[2024-01-03 11:04:34.896] [config ] [info]       + API Version............................: v1
+[2024-01-03 11:04:34.896] [pcf_app] [start] Starting...
+[2024-01-03 11:04:34.896] [pcf_app] [start] Reading local Policy configuration...
+[2024-01-03 11:04:34.900] [pcf_app] [debug] Rule steering-scenario-primary successfully parsed.
+[2024-01-03 11:04:34.900] [pcf_app] [debug] Rule steering-scenario-secondary successfully parsed.
+[2024-01-03 11:04:34.901] [pcf_app] [debug] Rule steering-rule-primary successfully parsed.
+[2024-01-03 11:04:34.901] [pcf_app] [debug] Rule steering-rule-secondary successfully parsed.
+[2024-01-03 11:04:34.901] [pcf_app] [debug] Decision decision_supi1 successfully parsed.
+[2024-01-03 11:04:34.901] [pcf_app] [debug] Decision decision_supi2 successfully parsed.
+[2024-01-03 11:04:34.901] [pcf_app] [info] Reading the Policies from file was successful
+[2024-01-03 11:04:34.901] [pcf_app] [debug] Policy Storage: 
+ - Default Decision: 
+ -- No Default Decision
+ - Slice Decisions: 
+ -- No Slice Decisions
+ - DNN Decisions: 
+ -- No DNN Decisions
+ - SUPI Decisions: 
+ -- SUPI: imsi-208950000000033
+ -- PCC Rule IDs: steering-rule-secondary
+
+ -- SUPI: imsi-208950000000032
+ -- PCC Rule IDs: steering-rule-primary
+
+
+[2024-01-03 11:04:34.901] [pcf_app] [debug] - NF instance info
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Instance ID: 7c639880-ecea-4e67-9d4b-c60cff8d0baf
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Instance name: OAI-PCF
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Instance type: PCF
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Instance fqdn: 
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Status: REGISTERED
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     HeartBeat timer: 50
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Priority: 1
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     Capacity: 100
+[2024-01-03 11:04:34.901] [pcf_app] [debug]     IPv4 Addr:
+[2024-01-03 11:04:34.901] [pcf_app] [debug]         192.168.70.139
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 	PCF Info
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 GroupId: oai-pcf-testgroupid
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 SupiRanges: Start - 208950000000031, End - 208950000000131, Pattern - ^imsi-20895[31-131]{10}$
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 GpsiRanges: Start - 752740000, End - 752749999, Pattern - ^gpsi-75274[0-9]{4}$
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 DNN: default
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 DNN: oai
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 DNN: oai.ipv4
+[2024-01-03 11:04:34.901] [pcf_app] [debug] 		 DNN: ims
+[2024-01-03 11:04:34.901] [pcf_app] [debug] PCF profile to json:
+ {"capacity":100,"custom_info":null,"heartBeatTimer":50,"ipv4Addresses":["192.168.70.139"],"nfInstanceId":"7c639880-ecea-4e67-9d4b-c60cff8d0baf","nfInstanceName":"OAI-PCF","nfServices":[{"ipEndPoints":[{"ipv4Address":"192.168.70.139","port":8080,"transport":"TCP"}],"nfServiceStatus":"REGISTERED","scheme":"http","serviceInstanceId":"npcf-smpolicycontrol","serviceName":"npcf-smpolicycontrol","versions":[{"apiFullVersion":"1.0.0","apiVersionInUri":"v1"}]}],"nfStatus":"REGISTERED","nfType":"PCF","pcfInfo":{"dnnList":["default","oai","oai.ipv4","ims"],"gpsiRanges":[{"end":"752749999","pattern":"^gpsi-75274[0-9]{4}$","start":"752740000"}],"groupId":"oai-pcf-testgroupid","supiRanges":[{"end":"208950000000131","pattern":"^imsi-20895[31-131]{10}$","start":"208950000000031"}]},"priority":1,"sNssais":[]}
+[2024-01-03 11:04:34.901] [pcf_sbi] [info] Sending NF registration request
+*   Trying 192.168.70.130:8080...
+* Connected to oai-nrf (192.168.70.130) port 8080 (#0)
+* Using HTTP2, server supports multiplexing
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x55dc8878b320)
+> PUT /nnrf-nfm/v1/nf-instances/7c639880-ecea-4e67-9d4b-c60cff8d0baf HTTP/2
+Host: oai-nrf:8080
+accept: */*
+content-type: application/json
+content-length: 803
+
+* We are completely uploaded and fine
+< HTTP/2 201 
+< date: Wed, 03 Jan 2024 10:04:34 GMT
+< content-type: application/json
+< location: 192.168.70.130/nnrf-nfm/v1/nf-instances/7c639880-ecea-4e67-9d4b-c60cff8d0baf
+< 
+* Connection #0 to host oai-nrf left intact
+[2024-01-03 11:04:34.907] [pcf_sbi] [debug] NF registration successful
+[2024-01-03 11:04:34.907] [pcf_app] [info] NRF TASK Created 
+[2024-01-03 11:04:34.907] [pcf_sbi] [info] HTTP2 server started
+[2024-01-03 11:08:22.368] [pcf_app] [debug] SM Policy request from SUPI: Decide based on SUPI
+[2024-01-03 11:08:22.369] [pcf_app] [info] Created Policy Decision for SUPI imsi-208950000000032 with ID 1
+[2024-01-03 11:14:34.074] [pcf_app] [debug] SM Policy request from SUPI: Decide based on SUPI
+[2024-01-03 11:14:34.074] [pcf_app] [info] Created Policy Decision for SUPI imsi-208950000000033 with ID 2
+Caught SIGINT signal 
+[2024-01-03 11:39:13.638] [system ] [start] exiting
+Shutting down HTTP servers...
+[2024-01-03 11:39:13.639] [pcf_sbi] [info] Sending NF de-registration request
+*   Trying 192.168.70.130:8080...
+* Connected to oai-nrf (192.168.70.130) port 8080 (#0)
+* Using HTTP2, server supports multiplexing
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x55dc8878b320)
+> DELETE /nnrf-nfm/v1/nf-instances/7c639880-ecea-4e67-9d4b-c60cff8d0baf HTTP/2
+Host: oai-nrf:8080
+accept: */*
+
+[2024-01-03 11:39:13.671] [pcf_sbi] [warning] NF Deregistration failed! Wrong response code: 404
+< HTTP/2 404 
+< date: Wed, 03 Jan 2024 10:39:13 GMT
+< content-type: application/json
+< location: 192.168.70.130/nnrf-nfm/v1/nf-instances/7c639880-ecea-4e67-9d4b-c60cff8d0baf
+< 
+* Connection #0 to host oai-nrf left intact
+[2024-01-03 11:39:13.671] [pcf_app] [debug] Delete PCF_APP instance...
+[2024-01-03 11:39:13.671] [pcf_sbi] [debug] Delete PCF_NRF instance...
+[2024-01-03 11:39:13.671] [pcf_app] [debug] Delete PCF Profile instance...
+[2024-01-03 11:39:13.671] [pcf_app] [debug] Delete PCF Client instance...
+[2024-01-03 11:39:13.671] [pcf_app] [debug] Delete PCF SMPC instance...
+[2024-01-03 11:39:13.672] [pcf_app] [debug] Delete PCF Profile instance...
+[2024-01-03 11:39:13.672] [pcf_app] [info] HTTP servers successfully stopped. Exiting
