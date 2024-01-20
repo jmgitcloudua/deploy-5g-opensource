@@ -20,7 +20,7 @@ Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/ma
 
 ## 5G CN Traffic Steering Deployment
 This tutorial shows how to configure the Traffic Steering feature at SMF and UPF, based on policies from the PCF.<br>
-Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/oai) to follow instructions to deploy OAI using docker-compose and K8S.
+Please click [here](https://github.com/jmgitcloudua/deploy-5g-opensource/tree/main/steering) to follow instructions to deploy OAI 5G CN Traffic Steering Deployment using docker-compose.
 
 ## Memo <br>
 Fell free to contact me for any questions you can have.

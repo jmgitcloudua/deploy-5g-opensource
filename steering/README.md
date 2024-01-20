@@ -1,4 +1,18 @@
 # OpenAirInterface 5G Core Traffic Steering/steering Network Deployment and Testing With Gnbsim
+
+- [Requirements](#requirements)
+- [Building Container Images or Retrieving Container Images](#1-building-container-images-or-retrieving-container-images)
+- [Deploying OAI 5g Core Network](#2-deploying-oai-5g-core-network)
+- [Docker Networks](#docker-networks)
+- [Deployment and Tracing](#deployment-and-tracing)
+- [Start all the NFs](#start-all-the-nfs)
+- [Simulate with gnbsim](#3-simulate-with-gnbsim)
+- [Traffic Test for Steering](#4-traffic-test-for-steering)
+- [Trace Analysis](#6-trace-analysis)
+- [Steering Scenario](#steering-scenario)
+- [Undeploy Network Functions](#7-undeploy-network-functions)
+- [References](#references)
+
 This tutorial shows how to configure the Traffic Steering feature at SMF and UPF, based on policies from the PCF.
 ![](./images/steering_tutorial.png)
 
