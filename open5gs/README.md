@@ -99,9 +99,12 @@ kubectl label namespace default istio-injection=enabled
 ```
 kubectl create namespace open5gs
 ```
-9. Add the helm repo to your Helm
+9. Add the helm repo to your Helm and update it
 ```
 helm repo add openverso https://gradiant.github.io/openverso-charts/
+```
+```
+helm repo update
 ```
 10. Deployment NGC and registration of subscribers
 ```
