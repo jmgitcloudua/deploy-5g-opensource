@@ -33,7 +33,7 @@ sudo apt -y install ansible
 4. Clone this repository
 ```
 git clone git@github.com:jmgitcloudua/deploy-5g-opensource.git
-cd deploy-5g-container/free5gc
+cd deploy-5g-opensource/free5gc
 ```
 5. Run ansible-playbook to deploy Free5GC network
 ```
