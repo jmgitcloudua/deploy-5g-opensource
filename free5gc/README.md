@@ -32,12 +32,12 @@ sudo apt -y install ansible
 ```
 4. Clone this repository
 ```
-git clone https://github.com/jmgitcloudua/deploy-5g-container.git
-cd deploy-5g-container
+git clone git@github.com:jmgitcloudua/deploy-5g-opensource.git
+cd deploy-5g-container/free5gc
 ```
 5. Run ansible-playbook to deploy Free5GC network
 ```
-ansible-playbook -K our-doker.yml  -e  "internet_network_interface=<< internet network interface name>>"
+ansible-playbook -K 5g-docker-deploy.yaml  -e  "internet_network_interface=<< internet network interface name>>"
 ```
 **Note:** the password is your user root of your operating system.  If an error occured during installation, please open 5g-docker-deploy.yaml and comment docker installation section. Next, install ![docker and docker compose](https://docs.docker.com/desktop/install/ubuntu/) manually.
 
