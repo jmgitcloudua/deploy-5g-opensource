@@ -1,0 +1,322 @@
+Now setting these variables '@DEREG_AFTER@ @DNN@ @GNBID@ @GTPuIFname@ @GTPuLocalAddr@ @IMEISV@ @KEY@ @MCC@ @MNC@ @MSIN@ @NGAPPeerAddr@ @OPc@ @PagingDRX@ @ProtectionScheme@ @RANUENGAPID@ @RoutingIndicator@ @SD@ @SST@ @TAC@ @URL@'
+Done setting the configuration
+Running gnbsim
+[gnbsim]2024/03/21 09:56:53.994973 example.go:46: Dail LocalAddr: 127.0.0.1/192.168.70.143/192.168.72.143:51608; RemoteAddr: 192.168.70.132:38412
+dump: 2015003e0000040001000903004f41492d414d460060000f010002f8590100410000f110010041005640011e005000120002f85900020008804000000116f000007b
+Procedure Code: id-NGSetup (21)
+PDU Length: 62
+Protocol IEs: 4 items
+  Item 0
+    Protocol IE: id-AMFName (1)
+      IE length: 9
+        decoding id(1) not supported yet.
+        dump: 03004f41492d414d46
+[gnbsim]2024/03/21 09:56:53.997517 example.go:66: write: len 44, info: &{Stream:0 SSN:0 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:0 CumTSN:0 AssocID:0}
+[gnbsim]2024/03/21 09:56:53.998187 example.go:87: read: len 66, info: &{Stream:0 SSN:0 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182333 CumTSN:0 AssocID:13}
+  Item 1
+    Protocol IE: id-ServedGUAMIList (96)
+      IE length: 15
+        decoding id(96) not supported yet.
+        dump: 010002f8590100410000f110010041
+  Item 2
+    Protocol IE: id-RelativeAMFCapacity (86)
+      IE length: 1
+        decoding id(86) not supported yet.
+        dump: 1e
+  Item 3
+    Protocol IE: id-PLMNSupportList (80)
+      IE length: 18
+        decoding id(80) not supported yet.
+        dump: 0002f85900020008804000000116f000007b
+[gnbsim]2024/03/21 09:56:53.998735 example.go:66: write: len 72, info: &{Stream:0 SSN:0 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182333 CumTSN:0 AssocID:13}
+[gnbsim]2024/03/21 09:56:54.031497 example.go:87: read: len 66, info: &{Stream:0 SSN:1 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182334 CumTSN:0 AssocID:13}
+dump: 0004403e000003000a000200040055000200000026002b2a7e0056050200002147a4b65cd73d026ee98dadf203ee024420106e86e050b08a80001bb955a872c4c0d8
+Procedure Code: id-DownlinkNASTransport (4)
+PDU Length: 62
+Protocol IEs: 3 items
+  Item 0
+    Protocol IE: id-AMF-UE-NGAP-ID (10)
+      IE length: 2
+  Item 1
+    Protocol IE: id-RAN-UE-NGAP-ID (85)
+      IE length: 2
+  Item 2
+    Protocol IE: id-NAS-PDU (38)
+      IE length: 43
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x0
+        Message Type: Authentication Request (0x56)
+          Authentication Request
+            ngKSI IE
+              NAS key set identifier: 0x5
+            ABBA IE
+              ABBA
+                Length: 2
+                Value: 0x0000
+            Authentication Parameter RAND IE: 0x21
+              RAND: 0x47a4b65cd73d026ee98dadf203ee0244
+            Authentication Parameter AUTN IE: 0x20
+              AUTN: 6e86e050b08a80001bb955a872c4c0d8
+              SEQ xor AK: 6e86e050b08a
+              AMF       : 8000
+              MAC       : 1bb955a872c4c0d8
+            received and calculated MAC values match.
+[gnbsim]2024/03/21 09:56:54.032676 example.go:66: write: len 64, info: &{Stream:0 SSN:1 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182334 CumTSN:0 AssocID:13}
+dump: 00044029000003000a0002000400550002000000260016157e037b339840007e005d02e50480200000e1360102
+Procedure Code: id-DownlinkNASTransport (4)
+[gnbsim]2024/03/21 09:56:54.054408 example.go:87: read: len 45, info: &{Stream:0 SSN:2 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182335 CumTSN:0 AssocID:13}
+PDU Length: 41
+Protocol IEs: 3 items
+  Item 0
+    Protocol IE: id-AMF-UE-NGAP-ID (10)
+      IE length: 2
+  Item 1
+    Protocol IE: id-RAN-UE-NGAP-ID (85)
+      IE length: 2
+  Item 2
+    Protocol IE: id-NAS-PDU (38)
+      IE length: 22
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x3
+          mac: 7b339840
+          seq: 0
+        ***** Integrity check passed
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x0
+        Message Type: Security Mode Command (0x5d)
+          Security Mode Command
+            Selected NAS security algorithms IE
+              NAS Security Algorithms: 0x02
+            ngKSI IE
+              NAS key set identifier: 0xe5
+            Replayed UE security capabilities IE
+              Capability: 0x80200000
+            IMEISV Request: 0xe
+              value: 0x1
+            Additional 5G Security Information: 0x36
+              value: 0x2
+                KAMF derivation is not required
+                Retransmission of the initial NAS message requested
+[gnbsim]2024/03/21 09:56:54.055073 example.go:66: write: len 93, info: &{Stream:0 SSN:2 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182335 CumTSN:0 AssocID:13}
+dump: 000e00809c000008000a00020004005500020000001c00070000f1100100410000000502de00007b007700091c000e000000000000005e0020085e0184179b59fa9bffacc095674d5ae88746fb1abd1d03164f44fed1cf4cda002440040000f1100026403c3b7e021e6ca6b1017e0042010177000bf202f8590100410000000454070002f85900a000150504de00007b310504de00007b210201005e01b616010c
+Procedure Code: id-InitialContextSetup (14)
+PDU Length: 156
+Protocol IEs: 8 items
+[gnbsim]2024/03/21 09:56:54.061458 example.go:87: read: len 161, info: &{Stream:0 SSN:3 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182336 CumTSN:0 AssocID:13}
+  Item 0
+    Protocol IE: id-AMF-UE-NGAP-ID (10)
+      IE length: 2
+  Item 1
+    Protocol IE: id-RAN-UE-NGAP-ID (85)
+      IE length: 2
+  Item 2
+    Protocol IE: id-GUAMI (28)
+      IE length: 7
+        decoding id(28) not supported yet.
+        dump: 0000f110010041
+  Item 3
+    Protocol IE: id-AllowedNSSAI (0)
+      IE length: 5
+        decoding id(0) not supported yet.
+        dump: 02de00007b
+  Item 4
+    Protocol IE: id-UESecurityCapabilities (119)
+      IE length: 9
+        decoding id(119) not supported yet.
+        dump: 1c000e000000000000
+  Item 5
+    Protocol IE: id-SecurityKey (94)
+      IE length: 32
+        decoding id(94) not supported yet.
+        dump: 085e0184179b59fa9bffacc095674d5ae88746fb1abd1d03164f44fed1cf4cda
+  Item 6
+    Protocol IE: id-MobilityRestrictionList (36)
+      IE length: 4
+        decoding id(36) not supported yet.
+        dump: 0000f110
+  Item 7
+    Protocol IE: id-NAS-PDU (38)
+      IE length: 60
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x2
+          mac: 1e6ca6b1
+          seq: 1
+        ***** Integrity check passed
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x0
+        Message Type: Registration Accept (0x42)
+          Registration Accept
+            5GS registration result IE
+              5G Registration Result: 01
+[gnbsim]2024/03/21 09:56:54.061852 example.go:66: write: len 19, info: &{Stream:0 SSN:3 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182336 CumTSN:0 AssocID:13}
+[gnbsim]2024/03/21 09:56:54.061901 example.go:66: write: len 53, info: &{Stream:0 SSN:3 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182336 CumTSN:0 AssocID:13}
+                Not registered for emergency services
+                Network slice-specific authentication and authorization is not to be performed
+                SMS over NAS not allowed
+                3GPP access
+            5G-GUTI: 0x77
+              5GS mobile identity
+                5G-GUTI: 02f85901004100000004
+            TAI list: 0x54
+              5GS tracking area identity list
+                number of element: 1
+                type of list: 0x0
+                MCC: 208
+                MNC: 95
+                tac: 0x00a000
+            Allowed NSSAI: 0x15
+              S-NSSAI
+                SST: 222
+                SD: 0x00007b
+[gnbsim]2024/03/21 09:56:57.062062 example.go:98: read: timeout
+[gnbsim]2024/03/21 09:56:58.062506 example.go:66: write: len 82, info: &{Stream:0 SSN:3 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182336 CumTSN:0 AssocID:13}
+[gnbsim]2024/03/21 09:56:58.105654 example.go:87: read: len 202, info: &{Stream:0 SSN:4 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182337 CumTSN:0 AssocID:13}
+dump: 001d0080c5000004000a00020004005500020000004a0080a30040016a7e0205116c64027e006801005b2e0101c2110009010006312101010109060603e80603e82905010c0101042204de00007b817900060920410101097b000d80000d04ac15036400100205dc251b0764656661756c74066d6e63303935066d6363323038046770727312015bc000007b2f0000040082000a0c3b9aca00303b9aca00008b000a01f0c0a848c93498d90a00860001000088000700090000090000006e400a0c3b9aca00303b9aca00
+Procedure Code: id-PDUSessionResourceSetup (29)
+PDU Length: 197
+Protocol IEs: 4 items
+  Item 0
+    Protocol IE: id-AMF-UE-NGAP-ID (10)
+      IE length: 2
+  Item 1
+    Protocol IE: id-RAN-UE-NGAP-ID (85)
+      IE length: 2
+  Item 2
+    Protocol IE: id-PDUSessionResourceSetupListSUReq (74)
+      IE length: 163
+        number of sequence: 1
+          PDU Session ID: 1
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x2
+          mac: 05116c64
+          seq: 2
+        ***** Integrity check passed
+        EPD: 5G Mobility Management (0x7e)
+        Security Header: 0x0
+        Message Type: DL NAS Transport (0x68)
+          DL NAS Transport
+            Payload container type
+              Type: N1 SM Information(0x1)
+            Payload container
+              Length: 91
+              EPD: 5G Session Management (0x2e)
+              PDU Session Identity: 0x1
+              Procedure Transaction Identity: 0x1
+              Message Type: PDU Session Establishment Accept (0xc2)
+                PDU Session Establishment Accept
+                  Selected PDU session type
+                    PDU Session Type: IPv4(1)
+                  Selected SSC mode
+                    SSC Mode: SSC mode 1(1)
+                  Authorized QoS rules
+                    QoS rules
+                      Length: 9
+                      Qos rule 0
+                        QoS rule identifier: 1
+                        Length: 6
+[gnbsim]2024/03/21 09:56:58.106456 ngap.go:710: Unsupported Protocol IE: 130
+[gnbsim]2024/03/21 09:56:58.106622 ngap.go:710: Unsupported Protocol IE: 110
+                        Rule operation code: Create new QoS rule(1)
+                        the QoS rule is the default QoS rule
+                        Number of packet filters: 1
+                        packet filter 0
+                          Packet filter identifier: 1
+                          Packet filter direction: 
+                          Length of packet filter contents: 1
+                          Packet filter content 0: Match-all type(1)
+                        QoS rule precedence: 1
+                        Segregation: Segregation not requested
+                        QoS flow identifier: QFI9
+                  Session AMBR
+                    Length of Session-AMBR contents: 6
+                    unit for Session-AMBR for downlink: (6)
+                    Session-AMBR for downlink: 1000
+                    unit for Session-AMBR for uplink: (6)
+                    Session-AMBR for uplink: 1000
+                  PDU address: 0x29
+                    Length: 5
+                    PDU session type: IPv4(1)
+                    PDU address information: 12.1.1.4
+            PDU session ID: 0x12
+              PDU session identity 2 value: 1
+          S-NSSAI
+            SST: 222
+            SD: 0x00007b
+          PDU Session Resource Setup Request Transfer
+          Protocol IEs: 4 items
+            Item 0
+              Protocol IE:  (130)
+                IE length: 10
+                  decoding id(130) not supported yet.
+                  dump: 0c3b9aca00303b9aca00
+            Item 1
+              Protocol IE: id-UL-NGU-UP-TNLInformation (139)
+                IE length: 10
+                  dump: 01f0c0a848c93498d90a
+                  Transport Layer Address
+                    bit string length: 32
+                    address: 192.168.72.201
+                  GTP TEID: 882432266
+            Item 2
+              Protocol IE: id-PDUSessionType (134)
+                IE length: 1
+                  PDU Session Type: ipv4 (0)
+            Item 3
+              Protocol IE: id-QosFlowSetupRequestList (136)
+                IE length: 7
+                  dump: 00090000090000
+                  Item 0
+                    Qos Flow Identifier: 9
+                    Qos Flow Level Qos Prameters: not supported yet
+    Item 3
+      Protocol IE:  (110)
+        IE length: 10
+          decoding id(110) not supported yet.
+          dump: 0c3b9aca00303b9aca00
+[gnbsim]2024/03/21 09:56:59.062685 example.go:98: read: timeout
+[gnbsim]2024/03/21 09:56:59.062969 example.go:66: write: len 40, info: &{Stream:0 SSN:4 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182337 CumTSN:0 AssocID:13}
+[gnbsim]2024/03/21 09:57:00.063101 example.go:241: GTP-U interface name: eth1
+[gnbsim]2024/03/21 09:57:00.063134 example.go:242: GTP-U local addr: 192.168.72.143
+[gnbsim]2024/03/21 09:57:00.063146 example.go:243: GTP-U peer addr : 192.168.72.201
+[gnbsim]2024/03/21 09:57:01.064566 example.go:328: GTP-U Peer TEID: 882432266
+[gnbsim]2024/03/21 09:57:01.064641 example.go:329: GTP-U Local TEID: 80515838
+[gnbsim]2024/03/21 09:57:01.064649 example.go:330: QoS Flow ID: 9
+[gnbsim]2024/03/21 09:57:01.064667 example.go:332: UE address: 12.1.1.4
+[gnbsim]2024/03/21 09:57:02.065473 example.go:194: Deregister after : 3600 Sec
+dump: 00044017000003000a0002000300550002000000260004037e0046
+  Procedure Code: id-DownlinkNASTransport (4)
+  PDU Length: 23
+  Protocol IEs: 3 items
+    Item 0
+      Protocol IE: id-AMF-UE-NGAP-ID (10)
+        IE length: 2
+    Item 1
+      Protocol IE: id-RAN-UE-NGAP-ID (85)
+        IE length: 2
+    Item 2
+[gnbsim]2024/03/21 10:56:34.119131 example.go:87: read: len 27, info: &{Stream:0 SSN:5 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182338 CumTSN:0 AssocID:13}
+      Protocol IE: id-NAS-PDU (38)
+        IE length: 4
+          EPD: 5G Mobility Management (0x7e)
+          Security Header: 0x0
+          Message Type: Deregistration Accept (0x46)
+[gnbsim]2024/03/21 10:57:02.066347 example.go:196: Deregerstering UE
+[gnbsim]2024/03/21 10:57:02.068537 example.go:66: write: len 67, info: &{Stream:0 SSN:5 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182338 CumTSN:0 AssocID:13}
+[gnbsim]2024/03/21 10:57:02.069132 example.go:87: read: len 20, info: &{Stream:0 SSN:6 Flags:0 _:0 PPID:1006632960 Context:0 TTL:0 TSN:78182339 CumTSN:0 AssocID:13}
+[gnbsim]2024/03/21 10:57:02.069251 ngap.go:213: unsupported procedure: 41
+[gnbsim]2024/03/21 10:57:02.069322 ngap.go:710: Unsupported Protocol IE: 114
+[gnbsim]2024/03/21 10:57:02.069366 ngap.go:710: Unsupported Protocol IE: 15
+dump: 002900100000020072000400030000000f400148
+  Procedure Code:  (41)
+  PDU Length: 16
+  Protocol IEs: 2 items
+    Item 0
+      Protocol IE:  (114)
+        IE length: 4
+          decoding id(114) not supported yet.
+          dump: 00030000
+    Item 1
+      Protocol IE:  (15)
+        IE length: 1
+          decoding id(15) not supported yet.
+          dump: 48

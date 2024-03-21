@@ -1,0 +1,10 @@
+docker logs oai-amf > /tmp/oai/steering-scenario/amf.log 2>&1
+docker logs oai-smf > /tmp/oai/steering-scenario/smf.log 2>&1
+docker logs oai-nrf > /tmp/oai/steering-scenario/nrf.log 2>&1
+docker logs vpp-upf > /tmp/oai/steering-scenario/vpp-upf.log 2>&1
+docker logs oai-udr > /tmp/oai/steering-scenario/udr.log 2>&1
+docker logs oai-udm > /tmp/oai/steering-scenario/udm.log 2>&1
+docker logs oai-ausf > /tmp/oai/steering-scenario/ausf.log 2>&1
+docker logs oai-pcf > /tmp/oai/steering-scenario/pcf.log 2>&1
+docker logs gnbsim-vpp2 > /tmp/oai/steering-scenario/gnbsim-vpp2.log 2>&1
+docker logs gnbsim-vpp3 > /tmp/oai/steering-scenario/gnbsim-vpp3.log 2>&1
