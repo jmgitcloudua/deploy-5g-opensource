@@ -1,0 +1,244 @@
+# docker-compose-gnbsim-vpp-usecase.yaml
+version: '3.8'
+services:
+    gnbsim-vpp2:
+        container_name: gnbsim-vpp2
+        image: rohankharade/gnbsim:latest
+        privileged: true
+        environment:
+            - MCC=208
+            - MNC=95
+            - GNBID=5
+            - TAC=0x00a000
+            - SST=222
+            - SD=00007b
+            - PagingDRX=v32
+            - RANUENGAPID=0
+            - IMEISV=35609204079514
+            - MSIN=0000000032
+            - RoutingIndicator=1234
+            - ProtectionScheme=null
+            - KEY=0C0A34601D4F07677303652C0462535B
+            - OPc=63bfa50ee6523365ff14c1f45f88737d
+            - DNN=default
+            - URL=http://www.asnt.org:8080/
+            - NRCellID=1
+            - USE_FQDN=no
+            - NGAPPeerAddr=192.168.70.132
+            - GTPuLocalAddr=192.168.72.142
+            - GTPuIFname=eth1
+        volumes:
+            - ./ran-conf/gnb.conf:/opt/oai-gnb/etc/gnb.conf
+        networks:
+            public_net:
+                ipv4_address: 192.168.70.142
+            public_net_access:
+                ipv4_address: 192.168.72.142
+        healthcheck:
+            test: /bin/bash -c "ip address show dev gtp-gnb"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnbsim-vpp3:
+        container_name: gnbsim-vpp3
+        image: rohankharade/gnbsim:latest
+        privileged: true
+        environment:
+            - MCC=208
+            - MNC=95
+            - GNBID=5
+            - TAC=0x00a000
+            - SST=222
+            - SD=00007b
+            - PagingDRX=v32
+            - RANUENGAPID=0
+            - IMEISV=35609204079514
+            - MSIN=0000000033
+            - RoutingIndicator=1234
+            - ProtectionScheme=null
+            - KEY=0C0A34601D4F07677303652C0462535B
+            - OPc=63bfa50ee6523365ff14c1f45f88737d
+            - DNN=default
+            - URL=http://www.asnt.org:8080/
+            - NRCellID=1
+            - USE_FQDN=no
+            - NGAPPeerAddr=192.168.70.132
+            - GTPuLocalAddr=192.168.72.143
+            - GTPuIFname=eth1
+        volumes:
+            - ./ran-conf/gnb.conf:/opt/oai-gnb/etc/gnb.conf
+        networks:
+            public_net:
+                ipv4_address: 192.168.70.143
+            public_net_access:
+                ipv4_address: 192.168.72.143
+        healthcheck:
+            test: /bin/bash -c "ip address show dev gtp-gnb"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnbsim-vpp4:
+        container_name: gnbsim-vpp4
+        image: rohankharade/gnbsim:latest
+        privileged: true
+        environment:
+            - MCC=208
+            - MNC=95
+            - GNBID=5
+            - TAC=0x00a000
+            - SST=222
+            - SD=00007b
+            - PagingDRX=v32
+            - RANUENGAPID=0
+            - IMEISV=35609204079514
+            - MSIN=0000000034
+            - RoutingIndicator=1234
+            - ProtectionScheme=null
+            - KEY=0C0A34601D4F07677303652C0462535B
+            - OPc=63bfa50ee6523365ff14c1f45f88737d
+            - DNN=default
+            - URL=http://www.asnt.org:8080/
+            - NRCellID=1
+            - USE_FQDN=no
+            - NGAPPeerAddr=192.168.70.132
+            - GTPuLocalAddr=192.168.72.144
+            - GTPuIFname=eth1
+        volumes:
+            - ./ran-conf/gnb.conf:/opt/oai-gnb/etc/gnb.conf
+        networks:
+            public_net:
+                ipv4_address: 192.168.70.144
+            public_net_access:
+                ipv4_address: 192.168.72.144
+        healthcheck:
+            test: /bin/bash -c "ip address show dev gtp-gnb"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnbsim-vpp5:
+        container_name: gnbsim-vpp5
+        image: rohankharade/gnbsim:latest
+        privileged: true
+        environment:
+            - MCC=208
+            - MNC=95
+            - GNBID=5
+            - TAC=0x00a000
+            - SST=222
+            - SD=00007b
+            - PagingDRX=v32
+            - RANUENGAPID=0
+            - IMEISV=35609204079514
+            - MSIN=0000000035
+            - RoutingIndicator=1234
+            - ProtectionScheme=null
+            - KEY=0C0A34601D4F07677303652C0462535B
+            - OPc=63bfa50ee6523365ff14c1f45f88737d
+            - DNN=default
+            - URL=http://www.asnt.org:8080/
+            - NRCellID=1
+            - USE_FQDN=no
+            - NGAPPeerAddr=192.168.70.132
+            - GTPuLocalAddr=192.168.72.145
+            - GTPuIFname=eth1
+        volumes:
+            - ./ran-conf/gnb.conf:/opt/oai-gnb/etc/gnb.conf
+        networks:
+            public_net:
+                ipv4_address: 192.168.70.145
+            public_net_access:
+                ipv4_address: 192.168.72.145
+        healthcheck:
+            test: /bin/bash -c "ip address show dev gtp-gnb"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnbsim-vpp6:
+        container_name: gnbsim-vpp6
+        image: rohankharade/gnbsim:latest
+        privileged: true
+        environment:
+            - MCC=208
+            - MNC=95
+            - GNBID=5
+            - TAC=0x00a000
+            - SST=222
+            - SD=00007b
+            - PagingDRX=v32
+            - RANUENGAPID=0
+            - IMEISV=35609204079514
+            - MSIN=0000000036
+            - RoutingIndicator=1234
+            - ProtectionScheme=null
+            - KEY=0C0A34601D4F07677303652C0462535B
+            - OPc=63bfa50ee6523365ff14c1f45f88737d
+            - DNN=default
+            - URL=http://www.asnt.org:8080/
+            - NRCellID=1
+            - USE_FQDN=no
+            - NGAPPeerAddr=192.168.70.132
+            - GTPuLocalAddr=192.168.72.146
+            - GTPuIFname=eth1
+        volumes:
+            - ./ran-conf/gnb.conf:/opt/oai-gnb/etc/gnb.conf
+        networks:
+            public_net:
+                ipv4_address: 192.168.70.146
+            public_net_access:
+                ipv4_address: 192.168.72.146
+        healthcheck:
+            test: /bin/bash -c "ip address show dev gtp-gnb"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnbsim-vpp7:
+        container_name: gnbsim-vpp7
+        image: rohankharade/gnbsim:latest
+        privileged: true
+        environment:
+            - MCC=208
+            - MNC=95
+            - GNBID=5
+            - TAC=0x00a000
+            - SST=222
+            - SD=00007b
+            - PagingDRX=v32
+            - RANUENGAPID=0
+            - IMEISV=35609204079514
+            - MSIN=0000000037
+            - RoutingIndicator=1234
+            - ProtectionScheme=null
+            - KEY=0C0A34601D4F07677303652C0462535B
+            - OPc=63bfa50ee6523365ff14c1f45f88737d
+            - DNN=default
+            - URL=http://www.asnt.org:8080/
+            - NRCellID=1
+            - USE_FQDN=no
+            - NGAPPeerAddr=192.168.70.132
+            - GTPuLocalAddr=192.168.72.147
+            - GTPuIFname=eth1
+        volumes:
+            - ./ran-conf/gnb.conf:/opt/oai-gnb/etc/gnb.conf
+        networks:
+            public_net:
+                ipv4_address: 192.168.70.147
+            public_net_access:
+                ipv4_address: 192.168.72.147
+        healthcheck:
+            test: /bin/bash -c "ip address show dev gtp-gnb"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+networks:
+    public_net:
+        external:
+            name: demo-oai-public-net
+    public_net_access:
+        external:
+            name: oai-public-access
