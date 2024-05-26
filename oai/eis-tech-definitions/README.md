@@ -1,13 +1,13 @@
 # README.md
 
-## Summary
+## EITS - Edge Internet Traffic Steering: Technologies used
 
-This repository provides a comprehensive overview of various tools and technologies commonly used in modern cloud-native, DevOps, and development environments. Each tool is summarized with a description alongside an image representing the tool.
+This repository provides a comprehensive overview of various tools and technologies commonly used in modern cloud-native, DevOps, include in EITS. Each tool is summarized with a description alongside an image representing the tool.
 
 ---
 
 ### Kubernetes
-<img src="https://kubernetes.io/images/favicon.png" width="100" align="left" />
+<img src="https://1000logos.net/wp-content/uploads/2022/07/Kubernetes-Logo.jpg" width="100" align="left" />
 
 **Kubernetes** is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
 
@@ -21,7 +21,7 @@ This repository provides a comprehensive overview of various tools and technolog
 ---
 
 ### Docker-compose
-<img src="https://docs.docker.com/compose/images/compose-logo.png" width="100" align="left" />
+<img src="https://openwhisk.apache.org/images/deployments/logo-docker-compose-text.svg" width="100" align="left" />
 
 **Docker-compose** is a tool for defining and running multi-container Docker applications. With a YAML file, you can configure all your application's services, networks, and volumes.
 
@@ -49,21 +49,21 @@ This repository provides a comprehensive overview of various tools and technolog
 ---
 
 ### OpenStack
-<img src="https://www.openstack.org/assets/openstack-logo/openstack-logo-horizontal.png" width="100" align="left" />
+<img src="https://object-storage-ca-ymq-1.vexxhost.net/swift/v1/6e4619c416ff4bd19e1c087f27a43eea/www-images-prod/openstack-logo/OpenStack-Logo-Vertical.png" width="100" align="left" />
 
 **OpenStack** is an open-source cloud computing platform for public and private clouds. It controls large pools of compute, storage, and networking resources through a data center, managed through a dashboard.
 
 ---
 
 ### BASH
-<img src="https://www.gnu.org/software/bash/manual/bashref/images/bash-logo-web.svg" width="100" align="left" />
+<img src="https://bashlogo.com/img/logo/png/full_colored_light.png" width="100" align="left" />
 
 **BASH** (Bourne Again SHell) is a Unix shell and command language. It is widely available on various operating systems and is a default command interpreter on most GNU/Linux systems.
 
 ---
 
 ### MobaXterm
-<img src="https://mobaxterm.mobatek.net/img/mobaxterm.png" width="100" align="left" />
+<img src="https://www.redeszone.net/app/uploads-redeszone.net/2021/05/mobaxterm_destacada-1200x675.jpg" width="100" align="left" />
 
 **MobaXterm** is an enhanced terminal for Windows with an X11 server, tabbed SSH client, network tools, and more. It provides a comprehensive toolkit for remote computing.
 
@@ -77,7 +77,7 @@ This repository provides a comprehensive overview of various tools and technolog
 ---
 
 ### Open Air Interface
-<img src="https://www.openairinterface.org/wp-content/uploads/2019/04/OAI-Logo_v5b-01.png" width="100" align="left" />
+<img src="https://openairinterface.org/wp-content/uploads/2020/11/cropped-oai_final_logo-trans.png" width="100" align="left" />
 
 **Open Air Interface** (OAI) is an open-source software platform for 4G/5G wireless communication systems. It provides tools for the design, deployment, and testing of mobile networks.
 
@@ -91,14 +91,14 @@ This repository provides a comprehensive overview of various tools and technolog
 ---
 
 ### K8S Lens
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lens-k8s-icon.png" width="100" align="left" />
+<img src="https://loft.sh/images/blog/posts/lens-logo.png" width="100" align="left" />
 
 **K8S Lens** is an integrated development environment (IDE) for Kubernetes. It simplifies the management of Kubernetes clusters with an intuitive graphical interface.
 
 ---
 
 ### Grafana
-<img src="https://grafana.com/static/img/menu/logo.png" width="100" align="left" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Grafana_logo.svg/1200px-Grafana_logo.svg.png" width="100" align="left" />
 
 **Grafana** is an open-source platform for monitoring and observability. It provides tools for visualizing data, querying, and alerting across different data sources.
 
@@ -112,7 +112,7 @@ This repository provides a comprehensive overview of various tools and technolog
 ---
 
 ### NetData
-<img src="https://www.netdata.cloud/assets/images/netdata-logo-web.png" width="100" align="left" />
+<img src="https://user-images.githubusercontent.com/1153921/95268672-a3665100-07ec-11eb-8078-db619486d6ad.png" width="100" align="left" />
 
 **NetData** is a distributed, real-time performance and health monitoring tool for systems and applications. It provides insightful and interactive visualizations.
 
