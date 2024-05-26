@@ -27,15 +27,12 @@ network_weights = {
     "bandwidth_utilization": 0.4,
     "throughput": 0.3,
     "latency": 0.2,
-    "packet_loss": 0.05,
-    "jitter": 0.05
+    "packet_loss": 0.05
 }
 
 computing_weights = {
     "cpu_usage": 0.3,
-    "memory_usage": 0.3,
-    "disk_io": 0.2,
-    "gpu_utilization": 0.2
+    "memory_usage": 0.3
 }
 
 @app.route('/steer/v1', methods=['GET'])
