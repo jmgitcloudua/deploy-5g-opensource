@@ -1,0 +1,18 @@
+# metrics.yaml
+site1:
+  network_metrics:
+    bandwidth_utilization: 0.8
+    latency: 0.6
+    packet_loss: 0.2
+  computing_metrics:
+    cpu_usage: 0.7
+    memory_usage: 0.6
+
+site2:
+  network_metrics:
+    bandwidth_utilization: 0.85
+    latency: 0.65
+    packet_loss: 0.15
+  computing_metrics:
+    cpu_usage: 0.65
+    memory_usage: 0.7
