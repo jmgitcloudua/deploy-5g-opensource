@@ -35,7 +35,7 @@ This repository provides a comprehensive overview of various tools and technolog
 ---
 
 ### K8S Multus
-<img src="https://github.com/intel/multus-cni/raw/master/images/logo.png" width="100" align="left" />
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROEHz-ldLoso2h75OJK83_VesGxJIqXx1YRQMAx-FevQ&s" width="100" align="left" />
 
 **K8S Multus** is a Kubernetes CNI (Container Network Interface) plugin that enables attaching multiple network interfaces to pods. This allows pods to have multiple network connections.
 
