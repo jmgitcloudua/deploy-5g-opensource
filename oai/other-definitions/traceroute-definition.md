@@ -1,4 +1,4 @@
-## EITS - Other definitions
+## EITS - Traceroute Definitions
 
 TraceRoute is a network diagnostic tool used to track the pathway taken by
 a packet on an IP network. Moreover, it shows the number of hops taken by the packet
