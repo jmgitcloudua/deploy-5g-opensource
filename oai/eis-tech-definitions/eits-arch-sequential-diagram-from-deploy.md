@@ -13,7 +13,7 @@
     - **Step 1.1:** GNBSIM returns a response to the UE.
 
 2. **GNBSIM to User Plane Function (UPF)**
-    - **Step 2:** GNBSIM sends a request to the API decision controller at the UPF (Interface N0).
+    - **Step 2:** GNBSIM sends a request to the API decision controller at the UPF (Interface N3).
     - **Step 2.1:** The UPF returns a response to the GNBSIM.
 
 3. **UPF to Control Plane (AMF, SMF)**
