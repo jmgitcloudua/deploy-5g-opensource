@@ -1,6 +1,8 @@
-# Edge Internet Traffic Steering Sequential Diagram - From EITS Deployment/Diagram
+# Edge Internet Traffic Steering (EITS) Sequential Diagram - From EITS Deployment/Diagram
 
-![Sequential Diagram](diagram.png)
+![EITS Deployment Diagram](Thesis-UA-OAI-Traffic-Steering-PCC-Diagram2.png "EITS Deployment Diagram")
+<br>
+![EITS Sequential Diagram From Deployment Diagram](Thesis-UA-EITS-OAI-TS-Sequential-Diagram.png "EITS Sequential Diagram From Deployment Diagram")
 
 ## Description of Sequential Steps/Flows
 
@@ -30,6 +32,6 @@
     - **Step 6:** The SMF requests data metrics from Prometheus/Grafana (part of the Monitoring system) for the Management Plane.
     - **Step 6.1:** The Monitoring system returns collected data metrics to the SMF.
 
-These steps illustrate the interactions between different network functions and how they cooperate to handle and steer internet traffic within an edge computing environment. The process involves setting up connections, managing sessions, and collecting data metrics for monitoring purposes.
-"""
+These steps illustrate the interactions between different network functions and how they cooperate to handle and steer internet traffic within an EITS environment. The process involves setting up connections, managing sessions, and collecting data metrics for monitoring purposes.
+
 
