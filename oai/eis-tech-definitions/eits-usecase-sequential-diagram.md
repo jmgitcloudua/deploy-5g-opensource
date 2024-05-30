@@ -1,6 +1,6 @@
 # Edge Internet Traffic Steering — Streaming Video Use Case
 
-## Sequentil Diagram
+## Sequential Diagram
 ![Sequential Diagram](Thesis-UA-EITS-OAI-TS-Video-UseCase-Sequential-Diagram.png)
 
 This document describes the steps and flows of an edge internet traffic steering use case for streaming video, as depicted in the sequential diagram above.
