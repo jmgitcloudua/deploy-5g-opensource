@@ -1,7 +1,9 @@
 # Edge Internet Traffic Steering (EITS) Sequential Diagram - From EITS Deployment/Diagram
 
+## EITS Deployment Diagram
 ![EITS Deployment Diagram](Thesis-UA-OAI-Traffic-Steering-PCC-Diagram2.png "EITS Deployment Diagram")
 <br>
+## EITS Sequential Diagram From Deployment Diagram
 ![EITS Sequential Diagram From Deployment Diagram](Thesis-UA-EITS-OAI-TS-Sequential-Diagram.png "EITS Sequential Diagram From Deployment Diagram")
 
 ## Description of Sequential Steps/Flows
