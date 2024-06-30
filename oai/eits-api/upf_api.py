@@ -39,14 +39,14 @@ computing_weights = {
 def steer_traffic():
     try:
         # Calculate combined score for each site
-        site1_score = calculate_combined_score(metrics['site1'])
-        site2_score = calculate_combined_score(metrics['site2'])
+        link1_score = calculate_combined_score(metrics['link1'])
+        link2_score = calculate_combined_score(metrics['link2'])
 
         # Choose the site with higher combined score
-        if site1_score > site2_score:
-            return jsonify({'message': f"Steering traffic to {site1_address}, score:{site1_score} - [site1]"})
+        if link1_score > link2_score:
+            return jsonify({'message': f"Steering traffic to {link1_address}, score:{link1_score} - [link1]"})
         else:
-            return jsonify({'message': f"Steering traffic to {site2_address}, score:{site2_score} - [site2]"})
+            return jsonify({'message': f"Steering traffic to {link2_address}, score:{link2_score} - [link2]"})
     except Exception as e:
         return jsonify({'error': f"Failed to steer traffic: {e}"}), 500
 
