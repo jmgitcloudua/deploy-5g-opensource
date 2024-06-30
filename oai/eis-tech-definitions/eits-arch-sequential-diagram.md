@@ -1,6 +1,6 @@
 # Edge Internet Traffic Steering Architecture -  Sequential Diagram
 
-![Diagram](EITS-Architecture-Sequential-Diagram.png)
+![Diagram](Premium-EITS-Architecture-Sequential-Diagram.png)
 
 
 ## Sequential Flow Description
