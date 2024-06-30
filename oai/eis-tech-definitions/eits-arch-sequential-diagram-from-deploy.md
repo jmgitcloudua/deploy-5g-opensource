@@ -1,10 +1,10 @@
 # Edge Internet Traffic Steering (EITS) Sequential Diagram - From EITS Deployment/Diagram
 
 ## EITS Deployment Diagram
-![EITS Deployment Diagram](Thesis-UA-OAI-Traffic-Steering-PCC-Diagram2.png "EITS Deployment Diagram")
+![EITS Deployment Diagram](Premium-EITS-OAI-Traffic-Steering-PCC-Diagram.png "EITS Deployment Diagram")
 <br>
 ## EITS Sequential Diagram From Deployment Diagram
-![EITS Sequential Diagram From Deployment Diagram](Thesis-UA-EITS-OAI-TS-Sequential-Diagram.png "EITS Sequential Diagram From Deployment Diagram")
+![EITS Sequential Diagram From Deployment Diagram](Premium-EITS-OAI-TS-Sequential-Diagram.png "EITS Sequential Diagram From Deployment Diagram")
 
 ## Description of Sequential Steps/Flows
 
@@ -19,7 +19,7 @@
 3. **UPF to Control Plane (AMF, SMF)**
     - **Step 3:** The UPF requests a session via Interface N4 to the Session Management Function (SMF).
     - **Step 3.1:** The SMF handles the data traffic and returns a response to the UPF.
-    - **Step 3.2:** The SMF steers traffic to the specified site or service (Site1/Site2— KPI) via Interface N6.
+    - **Step 3.2:** The SMF steers traffic to the specified site or service (Link1/Link2— KPI) via Interface N6.
     - **Step 3.3:** The traffic is returned to the UPF.
 
 4. **SMF to Access and Mobility Management Function (AMF)**
