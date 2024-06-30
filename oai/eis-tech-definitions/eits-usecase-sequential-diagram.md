@@ -1,43 +1,47 @@
 # Edge Internet Traffic Steering — Streaming Video Use Case
 
 ## Sequential Diagram
-![Sequential Diagram](Thesis-UA-EITS-OAI-TS-Video-UseCase-Sequential-Diagram.png)
+![Sequential Diagram](Premium-EITS-OAI-TS-Video-UseCase-Sequential-Diagram.png)
 <br>
 This document describes the steps and flows of an edge internet traffic steering use case for streaming video, as depicted in the sequential diagram above.
 
-## Steps and Flows
+## Sequential Flow Description
 
 ### Data/User Plane
-1. **UE (User Equipment) to gNB SIM (client-video)**
-   - **1:** UE sends a request to the gNB SIM.
-   - **1.1:** gNB SIM returns a response to the UE.
 
-2. **gNB SIM (client-video) to UPF (server-video)**
-   - **2:** gNB SIM sends a request to the UPF via the N3 interface.
-   - **2.1:** UPF returns a response to gNB SIM.
+1. **User Equipment (UE) sends a request**
+   - **Step 1**: The UE sends a video request to the GNB.
+   - **Step 1.1**: The GNB returns an acknowledgment of the request.
+
+2. **GNB sends request to UPF**
+   - **Step 2**: The GNB sends the video request to the UPF through Interface N3.
+   - **Step 2.1**: The UPF returns a "200 OK" response, indicating successful receipt.
+   - **Step 2.2**: The UPF forwards the request to the external data network (EXT-DN) through Interface N3.
+   - **Step 2.3**: The external network returns the data to the UPF.
+
+3. **UPF requests session to EXT-DN**
+   - **Step 3**: The UPF requests a session to the external data network through Interface N4.
+   - **Step 3.1**: The external network returns handle data traffic instructions.
+   - **Step 3.2**: The UPF steers traffic to either LINK1 or LINK2 via Interface N6, depending on KPI.
+   - **Step 3.3**: The UPF returns traffic information indicating a change to LINK2 if required.
 
 ### Control Plane
-3. **UPF (server-video) to SMF**
-   - **3:** UPF requests a session to be created via the N4 interface.
-   - **3.1:** SMF returns a handle to manage data traffic to the UPF.
 
-4. **SMF to AMF**
-   - **4:** SMF requests a connection to be established via the N11 interface.
-   - **4.1:** AMF establishes a connection with the SMF.
+4. **Request connection to AMF**
+   - **Step 4**: The UPF requests a connection to the AMF through Interface N11.
+   - **Step 4.1**: The AMF establishes the connection with the UPF.
 
-5. **SMF to PCF**
-   - **5:** SMF creates a session request and initiates a session via the N7 interface.
-   - **5.1:** PCF returns an update session with PCC (Policy Control Configuration) configuration to the SMF.
-
-### Data/User Plane (continued)
-3. **UPF (server-video) to EXT-DN (Internet)**
-   - **3.2:** UPF steers traffic to the Internet via Interface N6, considering the KPI (Key Performance Indicator) for SITE 1, SITE 2, etc.
-   - **3.3:** UPF returns the traffic to the changing consumed video site (SITE 2).
+5. **Session management**
+   - **Step 5**: The AMF creates a session request and initiates the session through Interface N7, using SMF and PCF.
+   - **Step 5.1**: The SMF returns an update session with PCC configuration to manage policy and charging rules.
 
 ### Management Plane
-6. **Monitoring**
-   - **6:** Monitoring system requests data metrics from Prometheus/Grafana.
-   - **6.1:** Prometheus/Grafana return collected data.
+
+6. **Monitoring and data metrics**
+   - **Step 6**: The monitoring system requests data metrics from the network components using Prometheus/Grafana.
+   - **Step 6.1**: The network components return collected data to the monitoring system.
+
+This description provides a detailed step-by-step explanation of the flow in the Edge Internet Traffic Steering (EITS) architecture for video use cases, highlighting interactions between the data/user plane, control plane, and management plane.
 
 ### Key Interfaces
 - **N3:** Between gNB SIM (client-video) and UPF (server-video)
