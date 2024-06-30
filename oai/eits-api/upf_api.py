@@ -25,9 +25,7 @@ site2_address = "192.168.74.134"
 # Define weights for network and computing metrics
 network_weights = {
     "bandwidth_utilization": 0.4,
-    "throughput": 0.3,
     "latency": 0.2,
-    "packet_loss": 0.05
 }
 
 computing_weights = {
